@@ -1,0 +1,40 @@
+{% load static %}
+<header>
+  <nav class="navbar navbar-light" style="background-color: lightskyblue">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'school:index' %}">
+        <img src="{% static 'img/logo.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
+        Начальная школа
+      </a>
+      {% with request.resolver_match.view_name as view_name %}        
+        <ul class="nav  nav-pills">
+          <li class="nav-item">              
+            <a class="nav-link {% if view_name == 'school:index' %} active {% endif %}" href="{% url 'school:index' %}">
+              Главная
+            </a>
+          </li>
+          <li class="nav-item">              
+            <a class="nav-link {% if view_name == 'pages:about' %} active {% endif %}" href="{% url 'pages:about' %}">
+              О проекте
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if view_name == 'pages:rules' %} active {% endif %}" href="{% url 'pages:rules' %}">
+              Наши правила
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if view_name == 'school:teacher_list' %} active {% endif %}" href="{% url 'school:teacher_list' %}">
+              Учителя
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if view_name == 'school:class_list' %} active {% endif %}" href="{% url 'school:class_list' %}">
+              Классы
+            </a>
+          </li>
+        </ul>
+      {% endwith %}      
+    </div>
+  </nav> 
+</header>

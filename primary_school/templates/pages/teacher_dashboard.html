@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Панель учителя {{ teacher.name }}{% endblock %}
+{% block content %}
+    <h1>Панель учителя {{ teacher.name }}</h1>
+
+    <h2>Домашние задания:</h2>
+    <ul>
+        {% if homeworks %}
+            {% for hw in homeworks %}
+                <li>Предмет: {{ hw.subject }}, Задание: {{ hw.homework }}</li>
+            {% endfor %}
+        {% else %}
+            <li>Нет домашних заданий</li>
+        {% endif %}
+    </ul>
+
+    <h2>Оценки учеников:</h2>
+    <ul>
+        {% if grades %}
+            {% for grade in grades %}
+                <li>Ученик: {{ grade.student_id }}, Предмет: {{ grade.subject }}, Оценка: {{ grade.grade }}</li>
+            {% endfor %}
+        {% else %}
+            <li>Нет оценок</li>
+        {% endif %}
+    </ul>
+
+    <h2>Ученики:</h2>
+    <ul>
+        {% if students %}
+            {% for student in students %}
+                <li>{{ student }}</li>
+            {% endfor %}
+        {% else %}
+            <li>Нет учеников</li>
+        {% endif %}
+    </ul>
+{% endblock %}
+{% include 'footer.html' %}

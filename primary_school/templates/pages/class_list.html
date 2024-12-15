@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Список классов{% endblock %}
+{% block content %}
+<h1>Список классов</h1>
+<ul>
+    {% for class in classes %}
+        <li>
+            <strong>{{ class.name }}</strong> - Специализация: {{ class.specialisation }}
+        </li>
+    {% empty %}
+        <li>Нет классов</li>
+    {% endfor %}
+</ul>
+{% endblock %}
